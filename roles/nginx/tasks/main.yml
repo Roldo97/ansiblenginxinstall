@@ -1,0 +1,6 @@
+---
+# tasks file for nginx
+- name: Instalar Nginx
+  yum: name=nginx state=latest
+  notify: "iniciar-configurar_firewall"
+...

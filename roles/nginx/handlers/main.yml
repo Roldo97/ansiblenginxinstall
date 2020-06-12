@@ -1,0 +1,19 @@
+---
+# handlers file for nginx
+- name: start-enable_nginx
+  service: 
+    name: nginx 
+    state: started
+    enabled: yes
+  listen: "iniciar-configurar_firewall"
+- name: configure_firewalld
+  firewalld:
+    service: "{{ item }}"
+    zone: public
+    permanent: yes
+    immediate: yes
+    state: enabled
+  loop:
+    - http
+    - https
+  listen: "iniciar-configurar_firewall"
